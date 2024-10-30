@@ -1,10 +1,14 @@
 import './App.css';
+import PopularMves from './components/PopularMves';
+import { TMDBProvider } from './contexts/TMDBContext';
 
 function App() {
   return (
-    <div className="App">
-     
-    </div>
+
+    <TMDBProvider>
+      <PopularMves></PopularMves>
+    </TMDBProvider>
+
   );
 }
 
