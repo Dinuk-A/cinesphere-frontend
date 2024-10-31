@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import PopularMves from './components/PopularMves';
-import OneMve from './components/OneMve'; // Import the OneMve component
+import OneMve from './components/OneMve'; 
 import { TMDBProvider } from './contexts/TMDBContext';
 
 function App() {

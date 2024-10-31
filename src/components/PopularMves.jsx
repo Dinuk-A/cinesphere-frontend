@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { TMDBContext } from "../contexts/TMDBContext";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import defaultPoster from '../assets/images/default-movie-poster.jpg';
 
+//THIS COMPONENT SHOWS A MOVIE LIST THAT POPULAR ALL TIME(DECIDED BY RATINGS OF ALL TIME)
+
+//INCLUDE A EXPLORE MORE BUTTON BELOW THE LIST TO ROUTE TO A PAGE WHERE USER CAN FILTER MOVIES 💥
 const PopularMves = () => {
     const popularMves = useContext(TMDBContext);
 
@@ -17,10 +20,10 @@ const PopularMves = () => {
                 {popularMves.map((mve) => (
                     <li key={mve.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                         <Link to={`/movie/${mve.id}`}> {/* Link to OneMve */}
-                            <img 
-                                src={mve.poster_path ? `https://image.tmdb.org/t/p/w500${mve.poster_path}` : defaultPoster} 
-                                alt={mve.original_title} 
-                                className="w-full h-72 object-cover" 
+                            <img
+                                src={mve.poster_path ? `https://image.tmdb.org/t/p/w500${mve.poster_path}` : defaultPoster}
+                                alt={mve.original_title}
+                                className="w-full h-72 object-cover"
                             />
                             <div className="p-4">
                                 <h3 className="text-lg font-semibold text-stone-800">{mve.title}</h3>
