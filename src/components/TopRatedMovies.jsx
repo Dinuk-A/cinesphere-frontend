@@ -36,7 +36,7 @@ const TopRatedMovies = ({limit = 4, allView = false}) => {
                      </div>
                      <div className="absolute inset-0 bg-gray-800 bg-opacity-90 p-4 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center text-white">
                        <h3 className="text-lg font-semibold">{mve.title}</h3>
-                       <p className="text-sm mt-1">By: {mve.directorName || "Unknown Director"}</p>
+                       <p className="text-sm mt-1">By: {mve.director || "Unknown Director"}</p>
                        <p className="text-xs mt-2 overflow-hidden text-ellipsis">
                          {mve.overview ? mve.overview.slice(0, 80) + "..." : "No description available."}
                        </p>

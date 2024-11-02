@@ -1,18 +1,20 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
 import './App.css';
-// import PopularMves from './components/PopularMves';
-import OneMve from './components/OneMve'; 
+import OneMve from './components/OneMve';
 import { TMDBProvider } from './contexts/TMDBContext';
 import TopRatedMovies from './components/TopRatedMovies';
+import Dashboard from './pages/Home';
 
 function App() {
   return (
     <TMDBProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<TopRatedMovies  allView={false} />} />
-          <Route path="/toprated" element={<TopRatedMovies  allView={true} />} />
-          <Route path="/movie/:id" element={<OneMve />} /> 
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Dashboard />} />
+
+          <Route path="/toprated" element={<TopRatedMovies allView={true} />} />
+          <Route path="/movie/:id" element={<OneMve />} />
         </Routes>
       </Router>
     </TMDBProvider>
