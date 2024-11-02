@@ -31,13 +31,29 @@ export const TMDBProvider = ({ children }) => {
             .catch(err => console.error("Error fetching in - cinemas movies:", err));
     };
 
-    //get upcoming movie list 
-    const fetchComingSoonMoviesList = () => {
-        axios
-            .get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_JOHN_CENA}&language=en-US&page=1`)
-            .then(res => setComingSoonMves(res.data.results))
-            .catch(err => console.error("Error fetching coming soon movies:", err));
+    const fetchComingSoonMoviesList = async () => {
+        try {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_JOHN_CENA}&language=en-US&page=1`);
+            const movies = response.data.results;
+
+            // Fetch director data for each movie
+            const moviesWithDirectors = await Promise.all(
+                movies.map(async (movie) => {
+                    const creditsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${process.env.REACT_APP_JOHN_CENA}`);
+                    const director = creditsResponse.data.crew.find(member => member.job === 'Director');
+                    return {
+                        ...movie,
+                        director: director ? director.name : null,
+                    };
+                })
+            );
+
+            setComingSoonMves(moviesWithDirectors);
+        } catch (err) {
+            console.error("Error fetching coming soon movies:", err);
+        }
     };
+
 
     //get weekly trending movie list 
     // const fetchTrendingMoviesList = () => {

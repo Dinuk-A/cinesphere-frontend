@@ -3,6 +3,7 @@ import './App.css';
 import OneMve from './components/OneMve';
 import { TMDBProvider } from './contexts/TMDBContext';
 import TopRatedMovies from './components/TopRatedMovies';
+import ComingSoonMovies from './components/ComingSoonMovies';
 import Dashboard from './pages/Home';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" element={<Dashboard />} />
 
           <Route path="/toprated" element={<TopRatedMovies allView={true} />} />
+          <Route path="/soonmovie" element={<ComingSoonMovies allView={true} />} />
           <Route path="/movie/:id" element={<OneMve />} />
         </Routes>
       </Router>
