@@ -10,9 +10,9 @@ const Dashboard = () => {
         <>
             <Header />
             <HeroSection />
-            <TopRatedMovies allView={false} limit={4} />
+            {/* <TopRatedMovies allView={false} limit={4} /> */}
             <ComingSoonMovies allView={false} limit={4} />
-            <Footer />
+            {/* <Footer /> */}
         </>
 
     )

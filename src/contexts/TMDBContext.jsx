@@ -10,7 +10,7 @@ export const TMDBProvider = ({ children }) => {
     const [topRatedMves, setTopRatedMves] = useState([]);
     const [inCinemasMves, setInCinemasMves] = useState([]);
     const [comingSoonMves, setComingSoonMves] = useState([]);
-    // const [trendingNowMves, setTrendingNowMves] = useState([]);
+    const [trendingNowMves, setTrendingNowMves] = useState([]);
 
     //get all time top rated movie list
     const fetchTopRatedMoviesList = () => {
@@ -56,12 +56,12 @@ export const TMDBProvider = ({ children }) => {
 
 
     //get weekly trending movie list 
-    // const fetchTrendingMoviesList = () => {
-    //     axios
-    //         .get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_JOHN_CENA}&language=en-US&page=1`)
-    //         .then(res => setTrendingNowMves(res.data.results))
-    //         .catch(err => console.error("Error fetching trending(week) movies:", err));
-    // };
+    const fetchTrendingMoviesList = () => {
+        axios
+            .get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_JOHN_CENA}&language=en-US&page=1`)
+            .then(res => setTrendingNowMves(res.data.results))
+            .catch(err => console.error("Error fetching trending(week) movies:", err));
+    };
 
     //TV series related states
     const [topRatedTVSs, setTopRatedTVSs] = useState([]);
@@ -103,6 +103,7 @@ export const TMDBProvider = ({ children }) => {
         fetchComingSoonMoviesList();
         fetchTopRatedTVSList();
         fetchOnAirTVSList();
+        fetchTrendingMoviesList();
         // fetchComingSoonTVSList();
     }, []);
 
@@ -113,6 +114,7 @@ export const TMDBProvider = ({ children }) => {
         comingSoonMves,
         topRatedTVSs,
         onAirTVSs,
+        trendingNowMves
         // comingSoonTVSs
     }
 
